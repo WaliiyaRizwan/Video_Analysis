@@ -1,0 +1,7 @@
+tomaco
+tarot
+tell
+ask
+bite
+orange
+carrot

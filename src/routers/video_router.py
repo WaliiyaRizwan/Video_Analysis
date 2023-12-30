@@ -2,16 +2,28 @@ from fastapi import FastAPI, File, UploadFile, HTTPException, APIRouter
 from src.utils.validate_video import VideoValidation
 from src.utils.audio_extraction import extract_audio
 from src.services.whisper_module import extract_text
+from src.utils.load_words import load_bad_words
 import os
 
 app = router = APIRouter(prefix="/video")
 
+# Specify the directory to store uploaded files
+UPLOADS_DIR = "uploads"
+
+# Create the directory if it doesn't exist
+os.makedirs(UPLOADS_DIR, exist_ok=True)
+
 # Endpoint for multiple video file uploads
 @app.post("/uploadvideo/")
-async def upload_videos(files: list[UploadFile] = File(...)):
-
+async def upload_videos(files: list[UploadFile] = File(...), bad_words_file: UploadFile = File(...)):
     #list of bad words
-    bad_words = ["tomaco", "tarot", "tell", "ask", "bite", "orange", "carrot"]
+
+    # Save the bad words file
+    bad_words_path = os.path.join(UPLOADS_DIR, bad_words_file.filename)
+    with open(bad_words_path, "wb") as buffer:
+        buffer.write(bad_words_file.file.read())
+
+    bad_words = load_bad_words(bad_words_path)
     
     result = []
 
