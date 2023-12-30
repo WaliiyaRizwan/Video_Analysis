@@ -83,4 +83,26 @@ This project is a FastAPI application that allows users to upload video files, e
    bad_words = ["tomaco", "tarot", "tell", "ask", "bite", "orange", "carrot"]
    bad_word_counts = {word: text.lower().count(word) for word in bad_words}
    ```
-   
+
+## Response:
+I tested the route in postman on a short funny clip of "Mind your Language". Here is how the response looks like:
+
+```
+   [
+    {
+        "message": "Audio analyzed successfully for videoplayback.mp4.",
+        "audio_file_path": "videoplayback.mp3",
+        "transcript": " and ask you to identify them and we'll see how well you do, alright? Who should we start with, Ellie? Yes please. What is this? Apple! Yeah. Loverly, you're not supposed to eat it. I'm more sorry, I only had a small bite. You're as well finished now. Sully, what is this? It is orange. Orange. All rings. That's better. You really must work at those arsehs. It's like very hard. Tri-sing round the ragged rock, the ragged rascal of rock. Lown the luggled block, the luggled block. Yes, you're going to have to keep practicing. Anna, what is this? Paper bag. Yes. Yes, but what's inside it? Well no, I cannot see inside. It's flour, you know, flour is. Yeah, but you're there to vending. No, no, it's not that kind of flour. This is flour to make pastry and bread. Ah, vice-male. It is. Gemilla? What is this? Garde. So I'm sure you're right, but what is it in English? I don't know. Have you never heard of a carrot? Garde. Yes, carrot. Oh, ha! Horace and Garde. No, no, no, Gemilla, that's horse and cart. This is a carrot. Who can tell me what these are? Fish fingers. Good. No, excuse please. No, they don't say it. What do I even say? You were going to say something about fish not having fingers? Yes, please. They were don't know. Mark. Tomaco. Good. Tarot. Potato. Potato. Ah, so. Juan. Giovanni. I like my juice. Good. One cow juice. No. Milk. Ah, see, really. You know where we catch milk from, Fond? Cisignola. Debic, Mond. Quiet, please, we get milk from cows. See, Baka. Cow. Run, Gitch. Cornflakes? No, oats. Oh, that is oats. My friend, who I am working with, every morning he's telling me, last night he's having his oats. He's telling me he's writing down very much. No, I'm sure he does. Who can tell me what this is? Baka. Good. Baka, come from. And a milkman. Baka does not come from the milk. Every week I buy the bacon from the milkman. Peek. Peek. Peek. You are polypig. You are a pig. You Italian. Ravioli. Ah, shut your plates up and eat your doughnuts. I don't like how they do. Juan, what Giovanni was trying to say is that Baka comes from a pig. Sora. No, can anyone tell me what we call a pig after it has been killed? Yes, please. It is a dead pig. Please. No, Ravioli, you know that's pork. Right. What is this? Anybody? Pinoch meat. Yes. Well, actually it's a tin of dog meat. Or blyme. I was putting dogs in tins to it. I think I've heard enough. They are better than they were. They could hardly be worse.",
+        "bad_word_counts": {
+            "tomaco": 1,
+            "tarot": 1,
+            "tell": 5,
+            "ask": 1,
+            "bite": 1,
+            "orange": 2,
+            "carrot": 3
+        }
+    }
+]
+
+```
