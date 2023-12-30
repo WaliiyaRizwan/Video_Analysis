@@ -14,10 +14,8 @@ UPLOADS_DIR = "uploads"
 os.makedirs(UPLOADS_DIR, exist_ok=True)
 
 # Endpoint for multiple video file uploads
-@app.post("/uploadvideo/")
+@app.post("/bad-word-count/")
 async def upload_videos(files: list[UploadFile] = File(...), bad_words_file: UploadFile = File(...)):
-    #list of bad words
-
     # Save the bad words file
     bad_words_path = os.path.join(UPLOADS_DIR, bad_words_file.filename)
     with open(bad_words_path, "wb") as buffer:

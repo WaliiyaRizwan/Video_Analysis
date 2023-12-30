@@ -1,6 +1,5 @@
 import whisper
 import torch 
-from tempfile import NamedTemporaryFile
 
 DEVICE = "cuda" if torch.cuda.is_available() else "cpu"
 # Load the Whisper model:
