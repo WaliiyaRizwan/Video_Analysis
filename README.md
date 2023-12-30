@@ -80,8 +80,14 @@ This project is a FastAPI application that allows users to upload video files, e
 5. ### Bad Word Analysis:
    Here, a list of "bad words" is defined, and a dictionary is created to count the occurrences of these words in a given text. Adjust the list of bad words as needed for your specific use case.
    ```
-   bad_words = ["tomaco", "tarot", "tell", "ask", "bite", "orange", "carrot"]
-   bad_word_counts = {word: text.lower().count(word) for word in bad_words}
+   # Save the bad words file
+       bad_words_path = os.path.join(UPLOADS_DIR, bad_words_file.filename)
+       with open(bad_words_path, "wb") as buffer:
+           buffer.write(bad_words_file.file.read())
+
+       bad_words = load_bad_words(bad_words_path)
+
+       bad_word_counts = {word: text.lower().count(word) for word in bad_words}
    ```
 
 ## Response:
