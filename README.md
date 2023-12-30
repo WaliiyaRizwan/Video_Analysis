@@ -24,8 +24,7 @@ This project is a FastAPI application that allows users to upload video files, e
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/yourusername/fastapi-video-analysis.git
-   cd fastapi-video-analysis
+   git clone https://github.com/WaliiyaRizwan/Exercise-FASTAPI.git
 
 ## Working 
 1. Run the App:
@@ -43,7 +42,7 @@ This project is a FastAPI application that allows users to upload video files, e
         try:
             # Validate that the uploaded file has a video extension
             if not VideoValidation(file.filename):
-                raise HTTPException(status_code=400, detail=f"Invalid file type. Please upload a video                file. ({file.filename})")
+                raise HTTPException(status_code=400, detail=f"Invalid file type. Please upload a video file. ({file.filename})")
 
             # Save the video file temporarily
             video_path = file.filename
