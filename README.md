@@ -32,7 +32,7 @@ This project is a FastAPI application that allows users to upload video files, e
    ```bash
    python server.py
 
-   http://127.0.0.1:5001/api/video/uploadvideo
+   http://127.0.0.1:5001/api/video/bad-word-count/
    
 2. ### Video Uploading and Validation:
    This code snippet handles the uploading and validation of video files. It iterates through the uploaded files, checks if they have valid video extensions, and saves them temporarily.
