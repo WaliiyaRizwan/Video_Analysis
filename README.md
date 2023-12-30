@@ -29,12 +29,15 @@ This project is a FastAPI application that allows users to upload video files, e
 
 ## Working 
 1. Run the App:
+   This command runs the application using the Python script server.py. After running the server, you can access the video uploading API at the specified URL.
    ```bash
    python server.py
 
    http://127.0.0.1:5001/api/video/uploadvideo
    
-2. Video Uploading and Validation:
+3. Video Uploading and Validation:
+   This code snippet handles the uploading and validation of video files. It iterates through the uploaded files, checks if they have valid video extensions, and saves them temporarily.
+   ### Upload
    ```
    for file in files:
         try:
@@ -47,7 +50,7 @@ This project is a FastAPI application that allows users to upload video files, e
             with open(video_path, "wb") as buffer:
                 buffer.write(file.file.read())
    ```
-   # Validation
+   ### Validation
    ```
    def VideoValidation(file_name: str) -> bool:
        video_extensions = {".mp4", ".avi", ".mkv", ".mov", ".wmv"} 
@@ -55,7 +58,8 @@ This project is a FastAPI application that allows users to upload video files, e
        return file_extension.lower() in video_extensions
    ```
 
-3. Audio Extraction:
+5. Audio Extraction:
+   This function extracts audio from a video file using the MoviePy library. It takes the path of the input video and the desired output path for the audio file.
    ```
    def extract_audio(video_path: str, output_path: str):
        video_clip = VideoFileClip(video_path)
@@ -65,8 +69,8 @@ This project is a FastAPI application that allows users to upload video files, e
        return output_path
    ```
     
-4. Transcription:
-
+7. Transcription:
+   This code segment uses the Whisper model to transcribe the text from an audio file. 
    ```
    model = whisper.load_model("base", device=DEVICE)
 
@@ -74,8 +78,8 @@ This project is a FastAPI application that allows users to upload video files, e
        result = model.transcribe(audio_file)
        return result["text"]
    ```
-5. Bad Word Analysis:
-
+8. Bad Word Analysis:
+   Here, a list of "bad words" is defined, and a dictionary is created to count the occurrences of these words in a given text. Adjust the list of bad words as needed for your specific use case.
    ```
    bad_words = ["tomaco", "tarot", "tell", "ask", "bite", "orange", "carrot"]
    bad_word_counts = {word: text.lower().count(word) for word in bad_words}
