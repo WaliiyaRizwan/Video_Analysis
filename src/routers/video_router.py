@@ -1,7 +1,7 @@
 from fastapi import FastAPI, File, UploadFile, HTTPException, APIRouter
 from src.utils.validate_video import VideoValidation
 from src.utils.audio_extraction import extract_audio
-from src.services.whisper_module import TextExtraction
+from src.services.whisper_module import extract_text
 import os
 
 app = router = APIRouter(prefix="/video")
@@ -33,7 +33,7 @@ async def upload_videos(files: list[UploadFile] = File(...)):
             # Extract audio from the video
             path = extract_audio(video_path, audio_path)
 
-            text = TextExtraction(audio_path)
+            text = extract_text(audio_path)
 
             # Count occurrences of bad words in the transcription
             bad_word_counts = {word: text.lower().count(word) for word in bad_words}
