@@ -5,7 +5,7 @@ from fastapi.exceptions import RequestValidationError
 from fastapi.responses import JSONResponse
 
 app = FastAPI(
-    title = "Exercise",
+    title="Exercise",
     version="1.0",
     docs_url=None
     if os.environ.get("DOCS_URL") == "None"
@@ -14,7 +14,6 @@ app = FastAPI(
     if os.environ.get("RE_DOC_URL") == "None"
     else os.environ.get("RE_DOC_URL"),
 )
-
 
 
 from src.config.cors_config import CorsConfig
@@ -33,10 +32,7 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-from .routers import(
-    main_router,
-    video_router
-)
+from .routers import main_router, video_router
 
 main_router.router.include_router(router=video_router.router)
 
